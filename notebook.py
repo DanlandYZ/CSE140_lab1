@@ -303,7 +303,7 @@ def plot2(file=None, df=None, field="per_element"):
 
 
 
-def plotPE(file=None, what=None, df=None,  lines=False, columns=4, logx=None, logy=None, average=False, average_by=None, dot_size=5, combined=False):
+def plotPE(file=None, what=None, df=None,  lines=False, columns=4, logx=None, logy=None, average=False, average_by=None, dot_size=5, combined=False, colorful=True):
 
     if df is None:
         df = render_csv(file,average_by=average_by)
@@ -342,13 +342,13 @@ def plotPE(file=None, what=None, df=None,  lines=False, columns=4, logx=None, lo
                 d = d.groupby(x).mean()
                 d[x] = d.index
                 #axs.plot.errorbar(x, y, yerr=1, fmt="o")
-                d.plot.scatter(y=y, x=x, ax=axs, s=dot_size, c=colors[i % len(colors)] )
+                d.plot.scatter(y=y, x=x, ax=axs, s=dot_size, c=colors[i % len(colors) if colorful else 1])
 
                 if lines:
                     d.plot(y=y, x=x, ax=axs, c=colors[i % len(colors)] )
 
             else:
-                d.plot.scatter(y=y, x=x, ax=axs, s=dot_size, c=colors[i % len(colors)])
+                d.plot.scatter(y=y, x=x, ax=axs, s=dot_size, c=colors[i % len(colors) if colorful else 1])
                 if lines:
                     d.plot(y=y, x=x, ax=axs, c=colors[i % len(colors)])
 
