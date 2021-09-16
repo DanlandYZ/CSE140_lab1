@@ -35,3 +35,9 @@ core
 .tmp
 .DS_Store
 .ipynb_checkpoints
+*-starter
+fresh_starter
+starter-repo
+autograde
+Lab.backup.ipynb
+hello.txt
