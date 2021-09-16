@@ -31,3 +31,4 @@ autograde: hello_world2.exe
 bitcount.exe: $(BUILD)bitcount.o
 
 #test
+#test2
