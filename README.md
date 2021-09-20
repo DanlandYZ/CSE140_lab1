@@ -10,22 +10,30 @@ open the Jupyter notebook and proceed with lab itself.
 
 # Software You Will Need
 
-1. A computer with Docker installed (either the cloud docker container via ssh, or your own laptop).  If you are using you're own machine, you'll need at least 8GB of free memory.
-2. The lab for the github classroom assignment for this lab.  Find the link on the course home page: https://github.com/CSE141pp/Home/.
+All your work for the class will be done in a docker container, and most of it
+will be done in a Jupyter Notebook inside that docker container.
 
-## Get Docker Working
-
-All your work for the class will be done in a docker container.  Docker
-containers are self-contained Linux-based workspaces.  Using docker ensures
-that your code runs in a consistent environment for you and the
+Docker containers are self-contained Linux-based workspaces.  Using docker
+ensures that your code runs in a consistent environment for you and the
 autograder/course staff.
 
-There are two options for getting getting access to docker.
+Jupyter Notebook is an interactive computing enviroment for gathering and
+displaying data (among other things).
 
-1.  Use the campus servers (which is the supported method).
+The content for each lab will be distributed via github classroom.
 
-2.  Run docker on your own machine (which is not supported, but there there is
-    [some documentation](RunningDocker.md)).
+So, to do the course, you need:
+
+1. You'll need access to a computer running docker and jupyter notebook. 
+2. Tha lab from github classroom.  Find the link on the course home page: https://github.com/CSE141pp/Home/.
+
+There are two options for getting access to docker/jupyter notebook:  
+
+1.  Via ssh and UCSD's DSMLP server farm. (A little cumbersome, but well-tested)
+2.  Via the DSMLP docker hub. (A new, supposedly better option)
+
+
+## Option 1:  SSH and DSLMP
 
 ### Get on the VPN
 
@@ -113,33 +121,7 @@ You can then clone your repo in the directory that you land in and work on it.
 Your files inside the `launch-142` environment are stored in this system:
 https://datahub.ucsd.edu/hub/login.
 
-## Cloning the Lab Repo
-
-First, accept the assignement on Github Classroom.  It's available via the 142L
-[home page](https://github.com/CSE141pp/Home/).
-
-This will set you up with a copy of the starter repository.
-
-Get yourself into docker as described above, and `git clone` the repo locally.
-
-You may need to create an ssh key on dsmlp and add it to your github account.  You can create the key with:
-
-```
-ssh-keygen
-```
-
-Then view your new public key:
-
-```
-cat ~/.ssh/id_rsa.pub
-```
-
-Then follow these instructions:
-
-https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
-
-
-## Opening Jupyter Notebook
+### Connecting to Jupyter Notebook
 
 If you are running on DSMLP, there is a url that appears early in the login
 that will tell you where to connect.  In the example above, it's this line:
@@ -164,7 +146,75 @@ dsmlp-login.ucsd.edu refused to connect.
 ```
 
 That's because you aren't on the VPN.  You may need to log all the way out of dslmp and back in after you connected to the VPN.
- 
+
+
+## Option 2: UCSD Datahub
+
+You can stick with a web-only interface by using UCSD Datahub.  This part of
+the same system as DSMLP and your directory is shared, so you can pretty easily
+switch between Option 1 and Option 2.
+
+The first step is to visit
+
+https://datahub.ucsd.edu/ 
+
+One of two things will happen:
+
+1. You'll find yourself at a nice home page and you can click the big golden "Log In" button. 
+
+2. If you've used the system before/recently it might drop you directly into a jupyter notebook file browser.
+
+If you it's #2, you need to click "Control Panel" (upper right) and then click the big red "Stop My Server" button, if it's there.  If it's not, that's fine.  Then click "Logout" (upper right) to get back to the homepage and the big golden button.
+
+Now, click the big golden button and login with your `@ucsd.edu` email address.
+You'll be presented with a list of Course Environments to choose from.  Select
+the one for `CSE 142L [FA21]`.
+
+After a progress bar, you'll end up at the Jupyter Notebook file browser.
+Looking at an empty directory (unless you've used the Datahub before, in which
+case your old files will be there).  In any case, you don't have a lab to do
+yet.
+
+To do that you'll need a shell.  You can get one by clicking "New" (upper
+right) and then "terminal", which will open up a terminal in your web browser.
+
+You can now proceed with the instructions below for cloning the lab repo.  Once
+you complete them, you can return to the Jupyter Notebook file browser and open
+your lab notebook.
+
+### Important Note
+
+Datahub tries to keep your session alive, so if you navigate away and then come
+back later, your notebook will still be there and it will initially seem to be
+working, but then commands in the notebook will start failing and complaining
+about "stale file handles". If this happens, you need to go to "control panel"
+and stop your server and then restart it.
+
+## Cloning the Lab Repo
+
+First, accept the assignement on Github Classroom.  It's available via the 142L
+[home page](https://github.com/CSE141pp/Home/).
+
+This will set you up with a copy of the starter repository.
+
+Then, at the terminal running on DSMLP or in your web browser or UCSD Datahub `git clone` the repo locally.
+
+You may need to create an ssh key on dsmlp and add it to your github account.  You can create the key with:
+
+```
+ssh-keygen
+```
+
+Then view your new public key:
+
+```
+cat ~/.ssh/id_rsa.pub
+```
+
+Then follow these instructions:
+
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+
 
 ## Open the Notebook
 
