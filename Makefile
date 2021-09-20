@@ -2,7 +2,7 @@
 
 default: 
 
-PRIVATE_FILES=about.ipynb Lab-key.ipynb Login.ipynb Login-key.ipynb Namebox.ipynb sample_question.ipynb Turnin.ipynb admin .git Moneta.md
+PRIVATE_FILES=Lab.key.ipynb admin .git Moneta.md Lab-equinix.key.ipynb
 
 STUDENT_EDITABLE_FILES=hello_world2.cpp
 
