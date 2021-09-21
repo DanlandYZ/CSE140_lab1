@@ -15,8 +15,7 @@ SPAWN_INTERACTIVE_SHELL=YES
 # Do not disable Jupyter proxy - see ticket CS0493759 (https://support.ucsd.edu/nav_to.do?uri=sn_customerservice_case.do?sys_id=cbfb91fc1befe010df40ed7dee4bcb4e%26sysparm_view=case)
 PROXY_ENABLED=YES
 
-K8S_DOCKER_IMAGE="stevenjswanson/cse142l-runner:v26"
-
-K8S_ENTRYPOINT="/opt/conda/bin/jupyter-notebook"
+K8S_DOCKER_IMAGE="stevenjswanson/cse142l-runner:v27"
+K8S_ENTRYPOINT="/cse142L/bin/cse142-notebook"
 
 exec /software/common64/dsmlp/bin/launch.sh "$@"
