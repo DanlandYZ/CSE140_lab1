@@ -116,7 +116,8 @@ Commands:
 If you go this route, you can skip instructions below regarding running
 `docker` directly.
 
-You can then clone your repo in the directory that you land in and work on it.
+You can then clone your repo in the directory that you land in and work on it. 
+
 
 Your files inside the `launch-142` environment are stored in this system:
 https://datahub.ucsd.edu/hub/login.
@@ -198,6 +199,8 @@ First, accept the assignement on Github Classroom.  It's available via the 142L
 This will set you up with a copy of the starter repository.
 
 Then, at the terminal running on DSMLP or in your web browser or UCSD Datahub `git clone` the repo locally.
+
+**Note**: Be sure to use the `ssh` method to checkout your repo rather than `http`. 
 
 You may need to create an ssh key on dsmlp and add it to your github account.  You can create the key with:
 
