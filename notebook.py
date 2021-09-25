@@ -59,6 +59,12 @@ def token(token):
   1.  Click "Sign in" again to get a new token.
   2.  Make sure you are using your "@ucsd.edu" email address.
   3.  Make sure you are completely replacing the old token in the command above.
+
+Here's the output of the authentication command:
+
+{e.output}
+
+If this output shows evidence of an uncaught exception (like a stack trace), contact the course staff.
 """)
               
 def plot1(file=None, df=None, field="per_element"):
