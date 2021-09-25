@@ -47,8 +47,9 @@ user = None
 def login(username):
     global user
     user = username
-    return  IFrame(f"{os.environ['DJR_SERVER']}/user/web-login?email={username}", width=500, height=400)
-
+    return  IFrame(f"https://cse142l-dev.wl.r.appspot.com/user/web-login?email={username}", width=500, height=400)
+    #return IFrame(f"{os.environ['DJR_SERVER']}/user/web-login?email={username}", width=500, height=400)
+    
 def token(token):
     cmd = f"cse142 login {user} --token {token}"
     try:
