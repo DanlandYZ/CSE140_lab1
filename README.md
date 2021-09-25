@@ -55,7 +55,7 @@ Here's a transcript of the login process for user `sjswanson`:
 
 ```
 Kilgores-MacBook-Pro-1323:~/UCSD/Teaching-dev/cse142/tng/CSE141pp-Root ssh sjswanson@dsmlp-login.ucsd.edu
-Last  login: Thu Aug 19 10:25:14 2021 from cpe-24-94-6-245.san.res.rr.com 
+Last login: Thu Aug 19 10:25:14 2021 from cpe-24-94-6-245.san.res.rr.com
 
 quota: No filesystem specified.
 Hello sjswanson, you are currently logged into dsmlp-login.ucsd.edu
