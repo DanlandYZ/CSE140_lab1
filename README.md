@@ -14,6 +14,7 @@ open the Jupyter notebook and proceed with lab itself.
 probably be fixed by the next lab, but for this lab you should use Chrome
 (first choice, most tested) or Firefox.  Edge Seems to be ok.
 
+
 All your work for the class will be done in a docker container, and most of it
 will be done in a Jupyter Notebook inside that docker container.
 
