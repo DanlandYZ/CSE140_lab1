@@ -10,6 +10,10 @@ open the Jupyter notebook and proceed with lab itself.
 
 # Software You Will Need
 
+**Note** Safari and Internet Explorer are not currently supported.  This will
+probably be fixed by the next lab, but for this lab you should use Chrome
+(first choice, most tested) or Firefox.  Edge Seems to be ok.
+
 All your work for the class will be done in a docker container, and most of it
 will be done in a Jupyter Notebook inside that docker container.
 
@@ -42,6 +46,13 @@ VPN](https://blink.ucsd.edu/technology/network/connections/off-campus/VPN/).
 
 I know it's not great.  We have tried to find a way around it and there is nothing we can do.
 
+**Note** It can sometimes takes several minutes to connect to the VPN.  Sorry about that :-(
+
+**Note** Be sure connect to the VPN before you start login to
+  `dsmlp-login`.  You can ssh into the `dsmlp-login` without the VPN,
+  but some things don't work after that point if you are not on the
+  VPN.
+
 ### Use dsmlp-login.ucsd.edu
 
 This is the official way to use the class infrastructure.  If you have trouble
@@ -51,39 +62,39 @@ Login to `dsmlp-login.ucsd.edu` (our primary student Linux SSH server) using you
 
 Run the command `launch-142` to connect to a remote Docker container running the development environment image.
 
-Here's a transcript of the login process for user `sjswanson`:
+Here's a transcript of the login process for user `oweng`:
 
 ```
-Kilgores-MacBook-Pro-1323:~/UCSD/Teaching-dev/cse142/tng/CSE141pp-Root ssh sjswanson@dsmlp-login.ucsd.edu
-Last login: Thu Aug 19 10:25:14 2021 from cpe-24-94-6-245.san.res.rr.com
+Attempting to create job ('pod') with 1 CPU cores, 4 GB RAM, and 0 GPU units.
+   (Adjust command line options, or edit "/software/common64/dsmlp/bin/launch-142" to change this configuration.)
+pod/oweng-7833 created
+Fri Sep 24 13:11:21 PDT 2021 starting up - pod status: Pending ; Successfully assigned oweng/oweng-7833 to its-dsmlp-n25.ucsd.edu
+Fri Sep 24 13:11:27 PDT 2021 pod is running with IP: 10.35.193.139 on node: its-dsmlp-n25.ucsd.edu
+ucsdnvsl/cse141pp:latest is now active.
 
-quota: No filesystem specified.
-Hello sjswanson, you are currently logged into dsmlp-login.ucsd.edu
+Please connect to: http://dsmlp-login.ucsd.edu:12750/?token=4afe375aeba7237123dad2497caad9ab975c2e21057e8a009545648a9babd043
 
-You are using 0% CPU on this system
+Connected to oweng-7833; type 'exit' to terminate pod/processes and close Jupyter notebooks.
+/course/CSE141pp-Config ~
+cat: /course/CSE141pp-Config/secrets/packet_auth_token: No such file or directory
+sysctl: setting key "kernel.perf_event_paranoid": Read-only file system
+Welcome to the archlab development environment!
+STUDENT_MODE enabled
+THIS_DOCKER_IMAGE=ucsdnvsl/cse141pp:sp21.188
+IN_DEPLOYMENT=DEPLOYED
+CLOUD_MODE=CLOUD
+~
+/course/CSE141pp-Config ~
+cat: /course/CSE141pp-Config/secrets/packet_auth_token: No such file or directory
+sysctl: setting key "kernel.perf_event_paranoid": Read-only file system
+Welcome to the archlab development environment!
+STUDENT_MODE enabled
+THIS_DOCKER_IMAGE=ucsdnvsl/cse141pp:sp21.188
+IN_DEPLOYMENT=DEPLOYED
+CLOUD_MODE=CLOUD
+~
+$
 
-
-*** Potential downtime/disruption of services ***
-
-August 22, 2021, 7:00am-7:30am
-
-Work on backend file servers may disrupt login sessions or software launched from /software or /acsnfs3/software.
-
-
-
-
-[sjswanson@dsmlp-login]:~:499$ launch-142
-Attempting to create job ('pod') with 1 CPU cores, 2 GB RAM, and 0 GPU units.
-   (Adjust command line options, or edit "/datasets/home/89/589/sjswanson/my-launch-142" to change this configuration.)
-pod/sjswanson-23790 created
-Thu Aug 19 10:32:41 PDT 2021 starting up - pod status: Pending ; Successfully assigned sjswanson/sjswanson-23790 to its-dsmlp-n19.ucsd.edu
-Thu Aug 19 10:32:46 PDT 2021 pod is running with IP: 10.40.0.4 on node: its-dsmlp-n19.ucsd.edu
-stevenjswanson/cse142l-runner:v15 is now active.
-
-Please connect to: http://dsmlp-login.ucsd.edu:1989/?token=80fb1310d723d124880cc21035afed53d675d7b776aef57d0ebed2c80b33d8
-
-Connected to sjswanson-23790; type 'exit' to terminate pod/processes and close Jupyter notebooks.
-sjswanson@sjswanson-23790:~$
 ```
 
 To make sure everything is working, you can run `cse142 --help`.  You should get something like this:
@@ -113,11 +124,7 @@ Commands:
   user
 ```
 
-If you go this route, you can skip instructions below regarding running
-`docker` directly.
-
 You can then clone your repo in the directory that you land in and work on it. 
-
 
 Your files inside the `launch-142` environment are stored in this system:
 https://datahub.ucsd.edu/hub/login.
@@ -165,7 +172,7 @@ One of two things will happen:
 
 2. If you've used the system before/recently it might drop you directly into a jupyter notebook file browser.
 
-If you it's #2, you need to click "Control Panel" (upper right) and then click the big red "Stop My Server" button, if it's there.  If it's not, that's fine.  Then click "Logout" (upper right) to get back to the homepage and the big golden button.
+If you it's #2, you will need to click "Control Panel" (upper right) and then click the big red "Stop My Server" button, if it's there.  If it's not, that's fine.  Then click "Logout" (upper right) to get back to the homepage and the big golden button.
 
 Now, click the big golden button and login with your `@ucsd.edu` email address.
 You'll be presented with a list of Course Environments to choose from.  Select
@@ -198,15 +205,35 @@ First, accept the assignement on Github Classroom.  It's available via the 142L
 
 This will set you up with a copy of the starter repository.
 
-Then, at the terminal running on DSMLP or in your web browser or UCSD Datahub `git clone` the repo locally.
+
+You'll need to open a terminal from data hub.  From the file browser, lect "new->terminal" from the menu in the upper right.
+At the resulting Linux prompt, you can `git clone` the repo locally.
 
 **Note**: Be sure to use the `ssh` method to checkout your repo rather than `http`. 
 
-You may need to create an ssh key on dsmlp and add it to your github account.  You can create the key with:
+![clone with ssh](images/clone-with-ssh.png)
+
+
+**Note**: Be sure to use the **`ssh`** method to checkout your repo rather than `http`.  Authentication over ssh is much simpler and it's what our tools assume.  If you try to use HTTP, you'll get something like:
+
+
+```
+sjswanson@dsmlp-jupyter-sjswanson:~/tt$ git clone http://github.com/NVSL/CSE141pp-Lab-Common.git
+Cloning into 'CSE141pp-Lab-Common'...
+Username for 'https://github.com': stevenjswanson
+Password for 'https://stevenjswanson@github.com':
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/NVSL/CSE141pp-Lab-Common.git/'
+```
+
+You may need to create an ssh key and add it to your github account.  You can create the key with (in your datahub terminal):
 
 ```
 ssh-keygen
 ```
+
+and accept the defaults.  I recommend no password.
 
 Then view your new public key:
 
@@ -219,7 +246,7 @@ Then follow these instructions:
 https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
 
+
 ## Open the Notebook
 
-Navigate to the directory you just cloned.   Click on `Lab.ipynb` to open the lab and get to work!
-
+Switch to the tab with file browser and navigate to the directory you just cloned.   Click on `Lab.ipynb` to open the lab and get to work!

@@ -64,9 +64,46 @@ Here's the output of the authentication command:
 
 {e.output}
 
-If this output shows evidence of an uncaught exception (like a stack trace), contact the course staff.
+If you get something like this:
+
+File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 792, in resolve
+    raise VersionConflict(dist, req).with_context(dependent_req)
+pkg_resources.ContextualVersionConflict: (grpcio 1.32.0 (/home/oweng/.local/lib/python3.7/site-packages), Requirement.parse('grpcio<2.0dev,>=1.38.1'), 'google-cloud-pubsub')
+
+that mentions a "ContextualVersionConflict" and includes a path in your home direcotry (e.g., "/home/oweng/.local..."), then you have some python libraries installed in your home directory (probably from an earlier course).  You can fix this with:
+
+mv ~/.local ~/.local-old
+
+If the output shows evidence of a different uncaught exception, contact the course staff.
+
 """.decode())
-              
+
+#         Traceback (most recent call last):
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 584, in _build_master
+#     ws.require(__requires__)
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 901, in require
+#     needed = self.resolve(parse_requirements(requirements))
+
+# During handling of the above exception, another exception occurred:
+
+# Traceback (most recent call last):
+#   File "/opt/conda/bin/cse142", line 6, in <module>
+#     from pkg_resources import load_entry_point
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 3254, in <module>
+#     @_call_aside
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 3238, in _call_aside
+#     f(*args, **kwargs)
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 3267, in _initialize_master_working_set
+#     working_set = WorkingSet._build_master()
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 586, in _build_master
+#     return cls._build_from_requirements(__requires__)
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 599, in _build_from_requirements
+#     dists = ws.resolve(reqs, Environment())
+#   File "/opt/conda/lib/python3.7/site-packages/pkg_resources/__init__.py", line 787, in resolve
+#     raise DistributionNotFound(req, requirers)
+# pkg_resources.DistributionNotFound: The 'ipython-genutils' distribution was not found and is required by jupyter-contrib-nbextensions, traitlets
+
+
 def plot1(file=None, df=None, field="per_element"):
     if df is None:
         df = render_csv(file)
@@ -168,7 +205,7 @@ def compare(content):
 
 def render_code(*argc, **kwargs):
     display(do_render_code(*argc, **kwargs))
-def do_render_code(file, lang="c++", show=None, line_numbers=True, trim_ends=False):
+def do_render_code(file, lang="c++", show=None, trim_ends=False):
     lines = open(file).readlines()
     start_line = 0
     end_line = len(lines)
