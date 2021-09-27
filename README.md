@@ -167,6 +167,8 @@ The first step is to visit
 
 https://datahub.ucsd.edu/ 
 
+![Log into datahub](images/log-into-datahub.gif)
+
 One of two things will happen:
 
 1. You'll find yourself at a nice home page and you can click the big golden "Log In" button. 
@@ -206,17 +208,7 @@ First, accept the assignement on Github Classroom.  It's available via the 142L
 
 This will set you up with a copy of the starter repository.
 
-
-You'll need to open a terminal from data hub.  From the file browser, lect "new->terminal" from the menu in the upper right.
-At the resulting Linux prompt, you can `git clone` the repo locally.
-
-**Note**: Be sure to use the `ssh` method to checkout your repo rather than `http`. 
-
-![clone with ssh](images/clone-with-ssh.png)
-
-
 **Note**: Be sure to use the **`ssh`** method to checkout your repo rather than `http`.  Authentication over ssh is much simpler and it's what our tools assume.  If you try to use HTTP, you'll get something like:
-
 
 ```
 sjswanson@dsmlp-jupyter-sjswanson:~/tt$ git clone http://github.com/NVSL/CSE141pp-Lab-Common.git
@@ -227,6 +219,15 @@ remote: Support for password authentication was removed on August 13, 2021. Plea
 remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
 fatal: Authentication failed for 'https://github.com/NVSL/CSE141pp-Lab-Common.git/'
 ```
+![clone with ssh](images/clone-with-ssh.png)
+
+
+
+You'll need to open a terminal from data hub.  From the file browser, lect "new->terminal" from the menu in the upper right.
+At the resulting Linux prompt, you can `git clone` the repo locally.
+
+![Log into datahub](images/open-terminal-short.gif)
+
 
 You may need to create an ssh key and add it to your github account.  You can create the key with (in your datahub terminal):
 
@@ -251,3 +252,5 @@ https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-
 ## Open the Notebook
 
 Switch to the tab with file browser and navigate to the directory you just cloned.   Click on `Lab.ipynb` to open the lab and get to work!
+
+**Note:** You'll need to trust the notebook when Jupyter asks.
